@@ -16,10 +16,11 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/scripts",
     "shadcn-nuxt",
+    "@nuxtjs/google-fonts",
   ],
   shadcn: {
-    prefix: '',
-    componentDir: './components/ui'
+    prefix: "",
+    componentDir: "./components/ui",
   },
   app: {
     head: {
@@ -29,6 +30,15 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       ],
     },
+  },
+  googleFonts: {
+    families: {
+      Inter: true,
+      "Playfair+Display": true,
+    },
+    display: "swap",
+    prefetch: true,
+    preload: true,
   },
   css: ["~/assets/css/tailwind.css"],
   vite: {
