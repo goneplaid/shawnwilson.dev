@@ -3,6 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+// This file is deprecated and is only being kept for shadcn-vue reference purposes.
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

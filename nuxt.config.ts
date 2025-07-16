@@ -1,5 +1,3 @@
-import tailwindcss from "@tailwindcss/vite";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
@@ -39,9 +37,5 @@ export default defineNuxtConfig({
     display: "swap",
     prefetch: true,
     preload: true,
-  },
-  css: ["~/assets/css/tailwind.css"],
-  vite: {
-    plugins: [tailwindcss()],
   },
 });
