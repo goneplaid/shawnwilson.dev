@@ -1,4 +1,3 @@
-<!-- components/layout/ContentGrid.vue -->
 <template>
   <div class="content-grid" :class="gridClasses">
     <slot />
@@ -9,7 +8,7 @@
 const props = defineProps({
   variant: {
     type: String,
-    default: "site-layout", // Default to the 3-column site layout
+    default: "site-layout",
     validator: (value) =>
       ["site-layout", "two-column", "single", "three-column"].includes(value),
   },
@@ -21,7 +20,7 @@ const props = defineProps({
 
 const gridClasses = computed(() => {
   const variants = {
-    "site-layout": "content-grid--site-layout", // Matches header grid
+    "site-layout": "content-grid--site-layout",
     single: "content-grid--single",
     "two-column": "content-grid--two-column",
     "three-column": "content-grid--three-column",
@@ -44,7 +43,6 @@ const gridClasses = computed(() => {
 
 .content-grid--site-layout {
   @apply grid grid-cols-3;
-  /* Matches the 3-column header grid */
 }
 
 .content-grid--single {
