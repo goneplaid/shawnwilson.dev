@@ -5,13 +5,13 @@
       <div class="site-header__grid">
         <div class="site-header__content">
           <h1 class="site-header__name">Shawn Wilson</h1>
-          <p class="site-header__title">Full Stack Product Engineer</p>
-          <p class="site-header__tagline">Problem → Design → Code → Ship</p>
+          <p class="site-header__title" role="doc-subtitle">Full Stack Product Engineer</p>
+          <p class="site-header__tagline" aria-label="Professional tagline">Problem → Design → Code → Ship</p>
         </div>
 
-        <div class="site-header__avatar">
+        <div class="site-header__avatar" role="img" aria-label="Profile photo of Shawn Wilson">
           <Avatar class="w-20 h-20">
-            <AvatarImage src="/images/portrait.png" alt="Shawn Wilson" />
+            <AvatarImage src="/images/portrait.png" alt="Shawn Wilson professional headshot" />
             <AvatarFallback>SW</AvatarFallback>
           </Avatar>
         </div>
@@ -25,7 +25,7 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 </script>
 

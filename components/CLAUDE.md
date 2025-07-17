@@ -17,7 +17,7 @@ This document provides specific guidelines for component development in this Nux
 ### Script Setup Syntax
 
 - Use `<script setup>` syntax for concise component definitions.
-- Place script tags at the top of each file and place the template below it.
+- Place template at the top of each file and place the script below it.
 - Leverage `ref`, `reactive`, and `computed` for reactive state management.
 
 ### Component Naming and File Structure

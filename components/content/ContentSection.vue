@@ -13,11 +13,13 @@
   </section>
 </template>
 
-<script setup>
-defineProps({
-  title: String,
-  description: String,
-});
+<script setup lang="ts">
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+defineProps<Props>();
 </script>
 
 <style scoped>

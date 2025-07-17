@@ -92,7 +92,7 @@ Follow these rules when you write code.
 ### Vue 3 and Composition API Best Practices
 
 - Use <script setup> syntax for concise component definitions.
-- Place script tags at the top of each file and place the template below it.
+- Place template at the top of each file and place the script below it.
 - Leverage ref, reactive, and computed for reactive state management.
 - Use provide/inject for dependency injection when appropriate.
 - Implement custom composables for reusable logic.
