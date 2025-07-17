@@ -31,8 +31,8 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Inter: true,
-      "Playfair+Display": true,
+      Inter: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "Playfair+Display": [100, 200, 300, 400, 500, 600, 700, 800, 900],
     },
     display: "swap",
     prefetch: true,
