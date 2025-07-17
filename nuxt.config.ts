@@ -11,10 +11,10 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
     "@nuxt/test-utils",
-    "@nuxt/ui",
     "@nuxt/scripts",
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
+    "@nuxtjs/tailwindcss",
   ],
   shadcn: {
     prefix: "",
@@ -38,4 +38,5 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true,
   },
+  css: ["~/assets/css/tailwind.css"],
 });
