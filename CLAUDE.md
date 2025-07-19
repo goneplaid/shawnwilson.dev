@@ -34,27 +34,35 @@ Follow these rules when you write code.
 ### Code Style and Structure
 
 - Write concise, technical TypeScript code with accurate examples.
+- Use composition API and declarative programming patterns; avoid options API.
 - Prefer iteration and modularization over code duplication.
-- Focus on readable, maintainable code over performance optimization.
-- Follow DRY principles and avoid code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, composables, helpers, static content, types.
 
 ### Directory and File Naming Conventions
 
-- Use lowercase with dashes for directories (e.g., components/auth-wizard, composables/user-auth).
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Use PascalCase for component names (e.g., AuthWizard.vue).
 - Use camelCase for composables (e.g., useAuthState.ts).
-- Use PascalCase for pages and layouts (e.g., LoginPage.vue, DefaultLayout.vue).
 
 ### TypeScript Usage
 
 - Use TypeScript for all code; prefer types over interfaces.
 - Avoid enums; use const objects instead.
-- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Use Vue 3 with TypeScript, leveraging defineComponent and PropType.
 
-### Components
+### Syntax and Formatting
 
-- Refer to `components/CLAUDE.md` for detailed component development guidelines.
-- Use Shadcn Vue and Radix Vue component libraries with Tailwind CSS.
-- Implement responsive design with a mobile-first approach.
+- Use arrow functions for methods and computed properties.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use template syntax for declarative rendering.
+
+### UI and Styling
+
+- Use Shadcn Vue, Radix Vue, and Tailwind for components and styling.
+- Prefer Shadcn Vue over Radix Vue for initial component needs and rely on Radix Vue when Shadcn Vue doesn't have what is needed.
+  - Please state when Shadcn Vue doesn't have what we need and always ask for confirmation first before proceeding when this scenario is encountered.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
 
 ### Performance Optimization
 
@@ -83,16 +91,23 @@ Follow these rules when you write code.
 
 ### Vue 3 and Composition API Best Practices
 
-- Use composition API and declarative programming patterns; avoid options API.
-- Implement custom composables for reusable logic.
+- Use <script setup> syntax for concise component definitions.
+- Place template at the top of each file and place the script below it.
+- Leverage ref, reactive, and computed for reactive state management.
 - Use provide/inject for dependency injection when appropriate.
+- Implement custom composables for reusable logic.
 
 ## Vue and NuxtJS docs
 
 Follow the official Nuxt.js and Vue.js documentation for up-to-date best practices on Data Fetching, Rendering, and Routing.
 
 - Use early returns whenever possible to make the code more readable.
-- Use consts instead of functions, for example, "const toggle = () =>". Also, define a type if possible.
+- Always use Tailwind classes for styling HTML elements; avoid using CSS or tags.
+- Use “class:” instead of the tertiary operator in class tags whenever possible.
+- Use descriptive variable and function/const names. Also, event functions should be named with a “handle” prefix, like “handleClick” for onClick and “handleKeyDown” for onKeyDown.
+- Implement accessibility features on elements. For example, a tag should have a tabindex=“0”, aria-label, on:click, and on:keydown, and similar attributes.
+- Use consts instead of functions, for example, “const toggle = () =>”. Also, define a type if possible.
+- Prefer component composition over elaborate param schemes or things like inheritance
 
 ## Package Manager
 
