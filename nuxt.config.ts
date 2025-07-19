@@ -38,5 +38,5 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true,
   },
-  css: ["~/assets/css/tailwind.css"],
+  css: ["~/assets/css/tailwind.css", "~/assets/css/typography.css"],
 });

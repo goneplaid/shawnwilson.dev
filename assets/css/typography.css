@@ -1,0 +1,27 @@
+.section-title {
+  @apply text-xl lg:text-2xl font-sans font-semibold tracking-wide uppercase;
+}
+
+.page-title {
+  @apply text-4xl lg:text-5xl font-display font-bold tracking-tight;
+}
+
+.title-subsection {
+  @apply text-lg lg:text-xl font-serif font-semibold;
+}
+
+.text-tagline {
+  @apply text-base font-sans italic tracking-wide;
+}
+
+.text-body {
+  @apply text-sm lg:text-base font-sans leading-relaxed;
+}
+
+.text-caption {
+  @apply text-xs lg:text-sm font-sans text-gray-600;
+}
+
+.text-meta {
+  @apply text-xs font-sans font-medium text-gray-500 tracking-wider;
+}

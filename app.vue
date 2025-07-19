@@ -1,4 +1,7 @@
-<!-- layouts/default.vue -->
+<script setup>
+import SiteHeader from "@/components/layout/SiteHeader.vue";
+</script>
+
 <template>
   <div class="site-wrapper">
     <SiteHeader />
@@ -8,13 +11,9 @@
   </div>
 </template>
 
-<script setup>
-import SiteHeader from "@/components/layout/SiteHeader.vue";
-</script>
-
 <style scoped>
 .site-wrapper {
-  @apply min-h-screen bg-background;
+  @apply min-h-screen bg-background max-w-7xl mx-auto p-12;
 }
 
 .site-main {
