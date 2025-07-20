@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   ],
   shadcn: {
     prefix: "",
-    componentDir: "./components/ui",
+    componentDir: "./app/components/ui",
   },
   app: {
     head: {
@@ -38,5 +38,5 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true,
   },
-  css: ["~/assets/css/tailwind.css", "~/assets/css/typography.css"],
+  css: ["./app/assets/css/tailwind.css", "./app/assets/css/typography.css"],
 });
