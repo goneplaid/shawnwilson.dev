@@ -38,6 +38,10 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
+#__nuxt {
+  @apply bg-background text-foreground;
+}
+
 .dark {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);

@@ -29,19 +29,7 @@
           Problem → Design → Code → Ship 🚀
         </p>
       </div>
-      <nav class="site-header__nav">
-        <ul>
-          <li>
-            <NuxtLink to="/">Home</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/work">Work</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/writing">Writing</NuxtLink>
-          </li>
-        </ul>
-      </nav>
+      <LayoutNav />
     </LayoutContentGrid>
   </header>
 </template>
@@ -60,22 +48,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 }
 
 .site-header__avatar {
-  @apply flex justify-end;
+  @apply flex justify-end border-2 border-primary rounded-full justify-self-end;
 }
 
 .site-header__tagline {
   @apply text-muted-foreground text-lg font-sans;
-}
-
-.site-header__nav {
-  @apply flex justify-end;
-
-  ul {
-    @apply flex space-x-6;
-  }
-
-  a {
-    @apply text-lg font-sans underline underline-offset-8 hover:text-muted-foreground transition-colors duration-200;
-  }
 }
 </style>

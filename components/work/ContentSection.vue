@@ -31,7 +31,7 @@ defineProps<Props>();
 
 <style scoped>
 .content-section {
-  @apply py-10 border-b border-zinc-300 flex flex-col gap-2;
+  @apply py-10 border-b flex flex-col gap-2;
 }
 
 .content-section__header {

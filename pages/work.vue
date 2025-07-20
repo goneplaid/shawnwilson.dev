@@ -25,6 +25,6 @@
 }
 
 h3 {
-  @apply pb-4 border-b-2 border-zinc-500;
+  @apply pb-4 border-b-2 border-muted-foreground;
 }
 </style>
