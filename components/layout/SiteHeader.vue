@@ -1,8 +1,8 @@
 <template>
   <header class="site-header">
-    <ContentGridLayout class="mb-8">
+    <LayoutContentGrid>
       <div>
-        <h1 class="site-header__title">Shawn Wilson</h1>
+        <h2>Shawn Wilson</h2>
       </div>
 
       <div
@@ -18,9 +18,9 @@
           <AvatarFallback>SW</AvatarFallback>
         </Avatar>
       </div>
-    </ContentGridLayout>
+    </LayoutContentGrid>
 
-    <ContentGridLayout>
+    <LayoutContentGrid class="items-end">
       <div>
         <p class="site-header__subtitle" role="doc-subtitle">
           Full Stack Product Engineer
@@ -29,22 +29,30 @@
           Problem → Design → Code → Ship 🚀
         </p>
       </div>
-    </ContentGridLayout>
+      <nav class="site-header__nav">
+        <ul>
+          <li>
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/work">Work</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/writing">Writing</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </LayoutContentGrid>
   </header>
 </template>
 
 <script setup lang="ts">
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import ContentGridLayout from "~/components/layout/ContentGridLayout.vue";
 </script>
 
 <style scoped>
 .site-header {
-  @apply bg-background;
-}
-
-.site-header__title {
-  @apply text-4xl lg:text-5xl text-foreground font-display font-bold;
+  @apply bg-background mb-4;
 }
 
 .site-header__subtitle {
@@ -57,5 +65,17 @@ import ContentGridLayout from "~/components/layout/ContentGridLayout.vue";
 
 .site-header__tagline {
   @apply text-muted-foreground text-lg font-sans;
+}
+
+.site-header__nav {
+  @apply flex justify-end;
+
+  ul {
+    @apply flex space-x-6;
+  }
+
+  a {
+    @apply text-lg font-sans underline underline-offset-8 hover:text-muted-foreground transition-colors duration-200;
+  }
 }
 </style>

@@ -6,7 +6,7 @@ import SiteHeader from "@/components/layout/SiteHeader.vue";
   <div class="site-wrapper">
     <SiteHeader />
     <main class="site-main">
-      <slot />
+      <NuxtPage />
     </main>
   </div>
 </template>
