@@ -1,0 +1,7 @@
+---
+title: Logged Data UI
+aside: 2017
+footer: EmberJS, Leaflet, GeoJSON, Tailwind
+---
+
+UI for the Agrian logged data service that allows agronomists to map field operation model properties to yield and soil dataset data points.

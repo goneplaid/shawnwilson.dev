@@ -1,0 +1,11 @@
+h1 {
+  @apply mt-32 text-primary text-6xl lg:text-7xl font-medium font-serif mb-8;
+}
+
+h2 {
+  @apply text-3xl lg:text-4xl text-primary font-display font-semibold;
+}
+
+h3 {
+  @apply text-xl lg:text-2xl text-muted-foreground font-sans font-light;
+}
