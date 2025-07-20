@@ -1,13 +1,10 @@
 <template>
-  <LayoutContentGrid>
-    <article class="writing">
-      <h1 class="writing__title">Writing</h1>
-    </article>
-  </LayoutContentGrid>
+  <div class="writing">
+    <h1>Writing</h1>
+    <LayoutContentGrid>
+      <article class="writing"></article>
+    </LayoutContentGrid>
+  </div>
 </template>
 
-<style scoped>
-.writing__title {
-  @apply mt-16 text-4xl font-light font-serif;
-}
-</style>
+<style scoped></style>
