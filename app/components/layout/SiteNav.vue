@@ -23,7 +23,7 @@
   }
 
   a {
-    @apply text-lg font-sans underline underline-offset-8 text-primary hover:text-muted-foreground transition-colors duration-200;
+    @apply lg:text-lg font-sans underline underline-offset-8 text-primary hover:text-muted-foreground transition-colors duration-200;
   }
 }
 </style>
