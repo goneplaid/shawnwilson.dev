@@ -29,7 +29,7 @@
           Problem → Design → Code → Ship 🚀
         </p>
       </div>
-      <LayoutNav />
+      <LayoutSiteNav />
     </LayoutContentGrid>
   </header>
 </template>
@@ -48,7 +48,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 }
 
 .site-header__avatar {
-  @apply flex justify-end border-2 border-primary rounded-full justify-self-end;
+  @apply flex justify-end rounded-full justify-self-end;
 }
 
 .site-header__tagline {

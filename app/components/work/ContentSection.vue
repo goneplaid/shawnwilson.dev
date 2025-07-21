@@ -9,7 +9,7 @@
     <p v-if="description" class="content-section__description">
       {{ description }}
     </p>
-    <p>
+    <p class="content-section__summary">
       <slot />
     </p>
     <p v-if="footer" class="content-section__footer">
@@ -31,7 +31,13 @@ defineProps<Props>();
 
 <style scoped>
 .content-section {
-  @apply py-10 border-b flex flex-col gap-2;
+  @apply py-10 border-b flex flex-col gap-2 hover:cursor-pointer transition-all duration-500;
+  box-shadow: inset 0 -1px 0 theme("colors.border");
+}
+
+.content-section:hover {
+  @apply bg-primary-foreground;
+  box-shadow: inset 0 -2px 0 theme("colors.muted.foreground");
 }
 
 .content-section__header {
@@ -47,7 +53,7 @@ defineProps<Props>();
 }
 
 .content-section__description {
-  @apply text-muted-foreground text-lg font-sans;
+  @apply text-muted-foreground text-lg font-sans italic;
 }
 
 .content-section__footer {
