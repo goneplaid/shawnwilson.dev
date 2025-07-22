@@ -1,5 +1,13 @@
 <template>
-  <section class="content-section">
+  <button
+    class="content-section"
+    :aria-label="`Open details for ${title}`"
+    :aria-expanded="isSelected"
+    type="button"
+    @click="handleContentClick"
+    @keydown.enter="handleContentClick"
+    @keydown.space.prevent="handleContentClick"
+  >
     <header v-if="title" class="content-section__header">
       <h3 class="content-section__title">{{ title }}</h3>
       <span v-if="aside" class="content-section__aside">
@@ -15,23 +23,32 @@
     <p v-if="footer" class="content-section__footer">
       {{ footer }}
     </p>
-  </section>
+  </button>
 </template>
 
 <script setup lang="ts">
-type Props = {
-  title?: string;
-  aside?: string;
-  description?: string;
-  footer?: string;
-};
+import type { WorkContentSection } from "~/types/content";
 
-defineProps<Props>();
+const props = defineProps<WorkContentSection>();
+const route = useRoute();
+const router = useRouter();
+
+const isSelected = computed(
+  () => route.hash === `#${props.path?.replace("/", "")}`
+);
+
+const handleContentClick = async (event: Event) => {
+  event.preventDefault();
+
+  await router.push({
+    hash: `#${props.path?.replace("/", "")}`,
+  });
+};
 </script>
 
 <style scoped>
 .content-section {
-  @apply py-10 border-b flex flex-col gap-2 hover:cursor-pointer transition-all duration-500;
+  @apply py-10 border-b flex flex-col gap-2 hover:cursor-pointer transition-all duration-500 text-left;
   box-shadow: inset 0 -1px 0 theme("colors.border");
 }
 

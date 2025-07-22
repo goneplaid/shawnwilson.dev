@@ -1,19 +1,38 @@
 <template>
   <div class="work">
     <h1>Work</h1>
-
     <LayoutContentGrid>
-      <div class="work__column">
-        <h3 class="work__experience-title">Relevant Experience</h3>
-        <WorkRelevantExperience />
-      </div>
-      <div class="work__column">
-        <h3 class="work__projects-title">Selected Projects</h3>
-        <WorkSelectedProjects />
-      </div>
+      <WorkContentColumn title="Relevant Experience" :content="experience" />
+      <WorkContentColumn title="Selected Projects" :content="projects" />
     </LayoutContentGrid>
   </div>
 </template>
+
+<script setup lang="ts">
+const { data: experienceData } = await useAsyncData("experience", () =>
+  queryCollection("experience").all()
+);
+
+const experience = computed(
+  () =>
+    experienceData.value?.map((item) => ({
+      ...item,
+      path: item.path.replace("experience/", ""),
+    })) || []
+);
+
+const { data: projectData } = await useAsyncData("projects", () =>
+  queryCollection("projects").all()
+);
+
+const projects = computed(
+  () =>
+    projectData.value?.map((item) => ({
+      ...item,
+      path: item.path.replace("projects/", ""),
+    })) || []
+);
+</script>
 
 <style scoped>
 .work {
