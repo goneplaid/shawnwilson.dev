@@ -40,15 +40,18 @@ const isSelected = computed(
 const handleContentClick = async (event: Event) => {
   event.preventDefault();
 
-  // Use nextTick to ensure DOM updates are complete before navigation
   await nextTick();
 
   try {
-    await router.push({
-      hash: `#${props.path?.replace("/", "")}`,
-    });
+    const itemName = props.path?.replace(/\//, "");
+    const currentItem = route.hash.replace(/#/, "");
+
+    if (itemName === currentItem) {
+      await router.push({ hash: "" });
+    } else {
+      await router.push({ hash: `#${itemName}` });
+    }
   } catch (error) {
-    // Handle navigation errors gracefully
     console.warn("Navigation failed:", error);
   }
 };

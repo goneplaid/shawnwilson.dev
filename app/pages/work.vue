@@ -11,6 +11,7 @@
       direction="right"
       :modal="false"
       :open="!!selectedItem"
+      @close="selectedItem = null"
     >
       <DrawerContent>
         <div class="mx-auto w-full">
@@ -97,8 +98,6 @@ watch(
     } else {
       selectedItem.value = null;
     }
-
-    console.log("Selected item:", selectedItem.value);
   },
   { immediate: true }
 );
