@@ -40,9 +40,17 @@ const isSelected = computed(
 const handleContentClick = async (event: Event) => {
   event.preventDefault();
 
-  await router.push({
-    hash: `#${props.path?.replace("/", "")}`,
-  });
+  // Use nextTick to ensure DOM updates are complete before navigation
+  await nextTick();
+
+  try {
+    await router.push({
+      hash: `#${props.path?.replace("/", "")}`,
+    });
+  } catch (error) {
+    // Handle navigation errors gracefully
+    console.warn("Navigation failed:", error);
+  }
 };
 </script>
 

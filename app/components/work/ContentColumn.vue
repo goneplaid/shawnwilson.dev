@@ -1,6 +1,6 @@
 <template>
   <div class="work__column">
-    <h3 class="work__experience-title">{{ title }}</h3>
+    <h3>{{ title }}</h3>
 
     <div class="work__items">
       <WorkContentSection
