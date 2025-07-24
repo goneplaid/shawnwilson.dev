@@ -14,14 +14,17 @@
       @close="selectedItem = null"
     >
       <DrawerContent>
-        <div class="mx-auto w-full">
+        <div class="work__aside">
           <DrawerHeader>
             <DrawerTitle>{{ selectedItem?.title || "Details" }}</DrawerTitle>
-            <DrawerDescription>{{
-              selectedItem?.description || "Description"
-            }}</DrawerDescription>
           </DrawerHeader>
-          <div class="p-4 pb-0">
+          <div class="work__aside-content">
+            <div class="work__aside-subtitle">
+              <h4>{{ selectedItem?.description || selectedItem?.footer }}</h4>
+              <span v-if="selectedItem">
+                {{ selectedItem?.aside }}
+              </span>
+            </div>
             <ContentRenderer v-if="selectedItem" :value="selectedItem" />
           </div>
           <DrawerFooter>
@@ -40,7 +43,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -112,7 +114,19 @@ watch(
   @apply flex flex-col mb-4 md:mb-0;
 }
 
-h3 {
-  @apply pb-4 border-b-2 border-muted-foreground;
+.work__aside {
+  @apply mx-auto w-full;
+}
+
+.work__aside-content {
+  @apply p-16 pt-0;
+}
+
+.work__aside-subtitle {
+  @apply flex flex-row justify-between pb-4 mb-10  border-b-2 border-muted-foreground;
+
+  span {
+    @apply text-muted-foreground text-base font-sans whitespace-nowrap leading-loose;
+  }
 }
 </style>

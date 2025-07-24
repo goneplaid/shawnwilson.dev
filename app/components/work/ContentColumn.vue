@@ -1,6 +1,6 @@
 <template>
   <div class="work__column">
-    <h3>{{ title }}</h3>
+    <h4>{{ title }}</h4>
 
     <div class="work__items">
       <WorkContentSection
@@ -30,13 +30,13 @@ const props = defineProps<Props>();
 <style scoped>
 .work__column {
   @apply flex flex-col mb-4 md:mb-0;
+
+  h4 {
+    @apply pb-4 border-b-2 border-muted-foreground;
+  }
 }
 
 .work__items {
   @apply flex flex-col;
-}
-
-h3 {
-  @apply pb-4 border-b-2 border-muted-foreground;
 }
 </style>

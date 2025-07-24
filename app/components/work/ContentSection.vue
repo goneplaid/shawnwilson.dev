@@ -9,7 +9,7 @@
     @keydown.space.prevent="handleContentClick"
   >
     <header v-if="title" class="content-section__header">
-      <h3 class="content-section__title">{{ title }}</h3>
+      <h4 class="content-section__title">{{ title }}</h4>
       <span v-if="aside" class="content-section__aside">
         {{ aside }}
       </span>

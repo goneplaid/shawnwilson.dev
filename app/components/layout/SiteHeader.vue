@@ -2,7 +2,7 @@
   <header class="site-header">
     <LayoutContentGrid>
       <div>
-        <h2>Shawn Wilson</h2>
+        <h3>Shawn Wilson</h3>
       </div>
 
       <div
