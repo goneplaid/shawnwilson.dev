@@ -6,47 +6,15 @@
       <WorkContentColumn title="Selected Projects" :content="projects" />
     </LayoutContentGrid>
 
-    <Drawer
+    <WorkContentDrawer
       v-if="selectedItem"
-      direction="right"
-      :modal="false"
-      :open="!!selectedItem"
+      :selected-item="selectedItem"
       @close="selectedItem = null"
-    >
-      <DrawerContent>
-        <div class="work__aside">
-          <DrawerHeader>
-            <DrawerTitle>{{ selectedItem?.title || "Details" }}</DrawerTitle>
-          </DrawerHeader>
-          <div class="work__aside-content">
-            <div class="work__aside-subtitle">
-              <h4>{{ selectedItem?.description || selectedItem?.footer }}</h4>
-              <span v-if="selectedItem">
-                {{ selectedItem?.aside }}
-              </span>
-            </div>
-            <ContentRenderer v-if="selectedItem" :value="selectedItem" />
-          </div>
-          <DrawerFooter>
-            <DrawerClose as-child>
-              <button @click="selectedItem = null">Close</button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
-    </Drawer>
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
 import type { WorkContentSection } from "~/types/content";
 
 const experienceData = ref<WorkContentSection[]>([]);
@@ -112,21 +80,5 @@ watch(
 
 .work__column {
   @apply flex flex-col mb-4 md:mb-0;
-}
-
-.work__aside {
-  @apply mx-auto w-full;
-}
-
-.work__aside-content {
-  @apply p-16 pt-0;
-}
-
-.work__aside-subtitle {
-  @apply flex flex-row justify-between pb-4 mb-10  border-b-2 border-muted-foreground;
-
-  span {
-    @apply text-muted-foreground text-base font-sans whitespace-nowrap leading-loose;
-  }
 }
 </style>
