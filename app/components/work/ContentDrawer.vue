@@ -8,7 +8,9 @@
     <DrawerContent>
       <div class="drawer-content">
         <DrawerHeader>
-          <DrawerTitle>{{ selectedItem?.title || "Details" }}</DrawerTitle>
+          <DrawerTitle @close="onClose">{{
+            selectedItem?.title || "Details"
+          }}</DrawerTitle>
         </DrawerHeader>
         <div class="drawer-content__body">
           <div class="drawer-content__subtitle">
