@@ -8,6 +8,7 @@
         :key="item.path"
         :path="item.path"
         :title="item.title"
+        :description="item.description"
         :aside="item.aside"
         :footer="item.footer"
       >
