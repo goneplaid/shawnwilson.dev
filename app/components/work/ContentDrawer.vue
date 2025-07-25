@@ -21,11 +21,6 @@
           </div>
           <ContentRenderer v-if="selectedItem" :value="selectedItem" />
         </div>
-        <DrawerFooter>
-          <DrawerClose as-child>
-            <button @click="onClose">Close</button>
-          </DrawerClose>
-        </DrawerFooter>
       </div>
     </DrawerContent>
   </Drawer>
@@ -34,9 +29,7 @@
 <script setup lang="ts">
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
