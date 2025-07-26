@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import type { WorkContentSection } from "~/types/content";
+import { useHashNav } from "@/composables/useHashNav";
 
 interface Props extends WorkContentSection {
   headingLevel?: 2 | 3 | 4 | 5 | 6;
@@ -56,7 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const route = useRoute();
-const router = useRouter();
+const { setHashLocation } = useHashNav();
 
 const sectionId = computed(() => props.path.replace(/^\//, ""));
 const headingTag = computed(() => `h${props.headingLevel}` as const);
@@ -70,15 +71,7 @@ const accessibleLabel = computed(() => {
 
 const handleToggle = async () => {
   try {
-    const targetHash = isSelected.value ? "" : `#${sectionId.value}`;
-
-    // Update route
-    await router.push({
-      path: route.path,
-      hash: targetHash,
-    });
-
-    // Announce state change to screen readers
+    setHashLocation(sectionId.value);
     announceStateChange();
   } catch (error) {
     console.error(`Failed to toggle section ${sectionId.value}:`, error);

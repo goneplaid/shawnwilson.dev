@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import type { WorkContentSection } from "~/types/content";
+import { useHashNav } from "@/composables/useHashNav";
 
 const experienceData = ref<WorkContentSection[]>([]);
 const projectData = ref<WorkContentSection[]>([]);
@@ -65,13 +66,10 @@ const projects = computed(
 );
 
 const route = useRoute();
-const router = useRouter();
+const { setHashLocation } = useHashNav();
 
 const handleClose = async () => {
-  await router.push({
-    path: route.path,
-    hash: "",
-  });
+  setHashLocation(undefined);
 };
 
 // `selectedItem` is based purely on the route hash as a source of truth.

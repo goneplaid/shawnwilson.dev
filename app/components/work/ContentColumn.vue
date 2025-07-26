@@ -4,15 +4,15 @@
 
     <div class="work__items">
       <WorkContentSection
-        v-for="item in props.content"
+        v-for="item in content"
         :key="item.path"
         :path="item.path"
         :title="item.title"
         :description="item.description"
         :aside="item.aside"
         :footer="item.footer"
-        :drawer-id="props.drawerId"
-        @close="props.onClose"
+        :drawer-id="drawerId"
+        @close="onClose"
       >
         <ContentRenderer :value="item" />
       </WorkContentSection>
@@ -29,7 +29,8 @@ type Props = {
   content: WorkContentSection[];
   onClose: () => void;
 };
-const props = defineProps<Props>();
+
+defineProps<Props>();
 </script>
 
 <style scoped>
