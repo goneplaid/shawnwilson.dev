@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Preview production build**: `pnpm preview`
 - **Generate static site**: `pnpm generate`
 - **Install dependencies**: `pnpm install`
+- **Run tests**: `pnpm test`
 
 ## Architecture Overview
 
@@ -89,3 +90,19 @@ Content is managed through:
 - Schema validation via Zod in `content.config.ts`
 - Automatic collection generation and querying
 - Frontmatter-based metadata for structured content
+
+## Testing
+
+The project uses **Vitest** with Nuxt Test Utils for end-to-end testing:
+
+- **Test framework**: Vitest with Nuxt environment
+- **Test utilities**: @nuxt/test-utils for E2E testing
+- **DOM environment**: happy-dom for lightweight DOM simulation
+- **Configuration**: Custom vitest.config.ts with thread pool optimization
+
+### Test Structure
+
+- **`tests/`**: Test files organized by functionality
+  - `smoke.test.ts`: Basic site functionality and page rendering tests
+- **Test patterns**: E2E tests using `$fetch()` for server-side rendering validation
+- **Coverage**: Tests verify page rendering, content loading, and basic site structure
