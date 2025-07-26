@@ -8,9 +8,15 @@ import { computed, onMounted, nextTick } from "vue";
 import DrawerOverlay from "./DrawerOverlay.vue";
 import { useDrawerPositioning } from "@/composables/useDrawerPositioning";
 
-const props = defineProps<
-  DialogContentProps & { class?: HTMLAttributes["class"] }
->();
+const props = withDefaults(
+  defineProps<
+    DialogContentProps & { id?: string; class?: HTMLAttributes["class"] }
+  >(),
+  {
+    id: "drawer",
+    class: undefined,
+  }
+);
 const emits = defineEmits<DialogContentEmits>();
 
 const forwarded = useForwardPropsEmits(props, emits);

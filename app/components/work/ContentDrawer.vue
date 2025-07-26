@@ -5,7 +5,7 @@
     :modal="false"
     :open="!!selectedItem"
   >
-    <DrawerContent>
+    <DrawerContent :id>
       <div class="drawer-content">
         <DrawerHeader>
           <DrawerTitle @close="onClose">{{
@@ -36,6 +36,7 @@ import {
 import type { WorkContentSection } from "~/types/content";
 
 const { selectedItem } = defineProps<{
+  id: string;
   selectedItem: WorkContentSection;
   onClose: () => void;
 }>();

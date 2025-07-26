@@ -8,6 +8,7 @@
 
     <WorkContentDrawer
       v-if="selectedItem"
+      id="work-content-drawer"
       :selected-item="selectedItem"
       @close="selectedItem = null"
     />
