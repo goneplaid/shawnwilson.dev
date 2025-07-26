@@ -10,6 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Generate static site**: `pnpm generate`
 - **Install dependencies**: `pnpm install`
 - **Run tests**: `pnpm test`
+- **Lint code**: ESLint is configured via `eslint.config.mjs` (uses Nuxt ESLint preset)
 
 ## Architecture Overview
 
@@ -67,6 +68,13 @@ The drawer positioning system (`app/composables/useDrawerPositioning.ts`) handle
 - Dynamic positioning based on viewport and content layout
 - Responsive behavior for different screen sizes
 - Real-time recalculation on window resize
+
+The hash navigation system (`app/composables/useHashNav.ts`) provides:
+
+- Hash-based navigation with optional item selection tracking
+- Automatic item selection based on route hash matching
+- Safe item selection that validates against provided items array
+- Integration with Vue Router for seamless navigation
 
 ### Component System
 
