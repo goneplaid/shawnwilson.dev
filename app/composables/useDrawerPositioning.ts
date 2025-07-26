@@ -1,4 +1,10 @@
-// composables/useDrawerPositioning.ts
+/**
+ * Composable for calculating dynamic drawer positioning in a three-column layout.
+ * 
+ * Automatically positions a right-side drawer to align with the third column of the
+ * content grid. Handles responsive positioning and recalculates on window resize.
+ * Designed to work with the site's three-column grid layout on large screens.
+ */
 import { ref, onMounted, onUnmounted } from "vue";
 
 export const useDrawerPositioning = () => {

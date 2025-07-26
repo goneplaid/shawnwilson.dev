@@ -31,7 +31,6 @@ import { useHashNav } from "@/composables/useHashNav";
 
 const experienceData = ref<WorkContentSection[]>([]);
 const projectData = ref<WorkContentSection[]>([]);
-const selectedItem = ref<WorkContentSection | null>(null);
 
 const DRAWER_ID = "work-content-drawer";
 
@@ -65,35 +64,12 @@ const projects = computed(
     })) || []
 );
 
-const route = useRoute();
-const { setHashLocation } = useHashNav();
+const allItems = computed(() => [...experience.value, ...projects.value]);
+const { selectedItem, setHashLocation } = useHashNav(allItems);
 
 const handleClose = async () => {
   setHashLocation(undefined);
 };
-
-// `selectedItem` is based purely on the route hash as a source of truth.
-// This ensures that the drawer state is always in sync with the URL and a part
-// of the browser history and reduces complexity by avoiding cumbersome
-// state management (e.g., prop-drilling, etc.)
-watch(
-  [() => route.hash, experience, projects],
-  ([hash, experience, projects]) => {
-    if (hash && hash.length > 1) {
-      const itemId = hash.substring(1);
-
-      const allItems = [...experience, ...projects];
-      const foundItem = allItems.find(
-        (item) => item.path?.replace(/\//, "") === itemId
-      );
-
-      selectedItem.value = foundItem || null;
-    } else {
-      selectedItem.value = null;
-    }
-  },
-  { immediate: true }
-);
 </script>
 
 <style scoped>
