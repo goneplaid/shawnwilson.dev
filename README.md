@@ -1,3 +1,5 @@
+[![Test](https://github.com/yourusername/yourrepo/actions/workflows/test.yml/badge.svg)](https://github.com/yourusername/yourrepo/actions/workflows/test.yml)
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

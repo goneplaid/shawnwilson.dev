@@ -1,7 +1,15 @@
 <template>
-  <section class="content-section">
+  <button
+    class="content-section"
+    :aria-label="`Open details for ${title}`"
+    :aria-expanded="isSelected"
+    type="button"
+    @click="handleContentClick"
+    @keydown.enter="handleContentClick"
+    @keydown.space.prevent="handleContentClick"
+  >
     <header v-if="title" class="content-section__header">
-      <h3 class="content-section__title">{{ title }}</h3>
+      <h4 class="content-section__title">{{ title }}</h4>
       <span v-if="aside" class="content-section__aside">
         {{ aside }}
       </span>
@@ -9,29 +17,55 @@
     <p v-if="description" class="content-section__description">
       {{ description }}
     </p>
-    <p>
+    <p class="content-section__summary">
       <slot />
     </p>
     <p v-if="footer" class="content-section__footer">
       {{ footer }}
     </p>
-  </section>
+  </button>
 </template>
 
 <script setup lang="ts">
-type Props = {
-  title?: string;
-  aside?: string;
-  description?: string;
-  footer?: string;
-};
+import type { WorkContentSection } from "~/types/content";
 
-defineProps<Props>();
+const props = defineProps<WorkContentSection>();
+const route = useRoute();
+const router = useRouter();
+
+const isSelected = computed(
+  () => route.hash === `#${props.path?.replace("/", "")}`
+);
+
+const handleContentClick = async (event: Event) => {
+  event.preventDefault();
+
+  await nextTick();
+
+  try {
+    const itemName = props.path?.replace(/\//, "");
+    const currentItem = route.hash.replace(/#/, "");
+
+    if (itemName === currentItem) {
+      await router.push({ hash: "" });
+    } else {
+      await router.push({ hash: `#${itemName}` });
+    }
+  } catch (error) {
+    console.warn("Navigation failed:", error);
+  }
+};
 </script>
 
 <style scoped>
 .content-section {
-  @apply py-10 border-b flex flex-col gap-2;
+  @apply py-10 border-b flex flex-col gap-2 hover:cursor-pointer transition-all duration-500 text-left;
+  box-shadow: inset 0 -1px 0 theme("colors.border");
+}
+
+.content-section:hover {
+  @apply bg-primary-foreground;
+  box-shadow: inset 0 -2px 0 theme("colors.muted.foreground");
 }
 
 .content-section__header {
@@ -47,7 +81,7 @@ defineProps<Props>();
 }
 
 .content-section__description {
-  @apply text-muted-foreground text-lg font-sans;
+  @apply text-muted-foreground text-lg font-sans italic;
 }
 
 .content-section__footer {

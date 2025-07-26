@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/test-utils",
     "@nuxt/scripts",
+    "@nuxt/test-utils/module",
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
