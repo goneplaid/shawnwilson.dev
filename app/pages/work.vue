@@ -2,15 +2,25 @@
   <div class="work">
     <h1>Work</h1>
     <LayoutContentGrid>
-      <WorkContentColumn title="Relevant Experience" :content="experience" />
-      <WorkContentColumn title="Selected Projects" :content="projects" />
+      <WorkContentColumn
+        title="Relevant Experience"
+        :content="experience"
+        :drawer-id="DRAWER_ID"
+        @close="handleClose"
+      />
+      <WorkContentColumn
+        title="Selected Projects"
+        :content="projects"
+        :drawer-id="DRAWER_ID"
+        @close="handleClose"
+      />
     </LayoutContentGrid>
 
     <WorkContentDrawer
       v-if="selectedItem"
-      id="work-content-drawer"
+      :id="DRAWER_ID"
       :selected-item="selectedItem"
-      @close="selectedItem = null"
+      @close="handleClose"
     />
   </div>
 </template>
@@ -21,6 +31,8 @@ import type { WorkContentSection } from "~/types/content";
 const experienceData = ref<WorkContentSection[]>([]);
 const projectData = ref<WorkContentSection[]>([]);
 const selectedItem = ref<WorkContentSection | null>(null);
+
+const DRAWER_ID = "work-content-drawer";
 
 onMounted(async () => {
   try {
@@ -53,7 +65,19 @@ const projects = computed(
 );
 
 const route = useRoute();
+const router = useRouter();
 
+const handleClose = async () => {
+  await router.push({
+    path: route.path,
+    hash: "",
+  });
+};
+
+// `selectedItem` is based purely on the route hash as a source of truth.
+// This ensures that the drawer state is always in sync with the URL and a part
+// of the browser history and reduces complexity by avoiding cumbersome
+// state management (e.g., prop-drilling, etc.)
 watch(
   [() => route.hash, experience, projects],
   ([hash, experience, projects]) => {

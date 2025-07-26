@@ -26,13 +26,14 @@ const delegatedProps = reactiveOmit(props, "class");
         props.class
       )
     "
+    @close="props.onClose"
   >
     <slot />
     <button
       v-if="props.onClose"
       type="button"
       aria-label="Close drawer"
-      class="inline-flex items-center justify-center rounded-md p-2 min-h-[44px] min-w-[44px] text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-colors duration-200"
+      class="-mr-2 inline-flex items-center justify-center rounded-md p-2 min-h-[44px] min-w-[44px] text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-colors duration-200"
       @click="props.onClose"
       @keydown.escape="props.onClose"
     >

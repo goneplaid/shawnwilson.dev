@@ -4,6 +4,7 @@
     direction="right"
     :modal="false"
     :open="!!selectedItem"
+    @close="onClose"
   >
     <DrawerContent :id>
       <div class="drawer-content">
@@ -35,7 +36,7 @@ import {
 } from "@/components/ui/drawer";
 import type { WorkContentSection } from "~/types/content";
 
-const { selectedItem } = defineProps<{
+defineProps<{
   id: string;
   selectedItem: WorkContentSection;
   onClose: () => void;

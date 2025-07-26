@@ -1,5 +1,5 @@
 export type WorkContentSection = {
-  path?: string;
+  path: string;
   title?: string;
   aside?: string;
   description?: string;

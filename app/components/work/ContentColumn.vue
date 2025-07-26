@@ -11,6 +11,8 @@
         :description="item.description"
         :aside="item.aside"
         :footer="item.footer"
+        :drawer-id="props.drawerId"
+        @close="props.onClose"
       >
         <ContentRenderer :value="item" />
       </WorkContentSection>
@@ -23,7 +25,9 @@ import type { WorkContentSection } from "~/types/content";
 
 type Props = {
   title: string;
+  drawerId: string;
   content: WorkContentSection[];
+  onClose: () => void;
 };
 const props = defineProps<Props>();
 </script>
