@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <h1 class="bg-red-600 text-5xl">Hello 👋</h1>
+  <div class="bg-muted">
+    <h1 class="text-5xl">Hello 👋</h1>
   </div>
 </template>
