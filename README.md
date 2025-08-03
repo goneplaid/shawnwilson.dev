@@ -4,7 +4,7 @@ My portfolio site. Built with Nuxt 4 and a few carefully chosen tools.
 
 ## Test status
 
-[![Test](https://github.com/goneplaid/shawnwilson.dev/workflows/Test/badge.svg?branch=main)](https://github.com/goneplaid/shawnwilson.dev/actions/workflows/test.yml)
+[![Test](https://github.com/goneplaid/shawnwilson.dev/workflows/Test/badge.svg)](https://github.com/goneplaid/shawnwilson.dev/actions/workflows/test.yml)
 
 ## Development
 
