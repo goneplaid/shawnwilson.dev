@@ -13,7 +13,7 @@
         class="text-2xl md:text-3xl lg:text-4xl text-muted-foreground"
         role="doc-subtitle"
       >
-        Portfolio Site
+        Portfolio Site (🚧)
       </p>
     </header>
 
