@@ -10,10 +10,10 @@
         ShawnWilson.dev
       </h1>
       <p
-        class="text-2xl md:text-3xl lg:text-4xl text-muted-foreground"
+        class="text-xl md:text-2xl lg:text-3xl text-muted-foreground"
         role="doc-subtitle"
       >
-        In development 🏗️
+        Portfolio site coming soon
       </p>
     </header>
 
