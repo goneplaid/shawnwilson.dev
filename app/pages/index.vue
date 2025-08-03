@@ -10,10 +10,10 @@
         ShawnWilson.dev
       </h1>
       <p
-        class="text-2xl md:text-3xl lg:text-4xl text-muted-foreground"
+        class="text-xl md:text-2xl lg:text-3xl text-muted-foreground"
         role="doc-subtitle"
       >
-        Portfolio Site
+        Portfolio site coming soon
       </p>
     </header>
 
@@ -33,7 +33,7 @@
         </AvatarFallback>
       </Avatar>
       <figcaption id="portrait-caption" class="sr-only">
-        Portrait of Shawn Wilson, web developer
+        Portrait of Shawn Wilson
       </figcaption>
     </figure>
   </main>

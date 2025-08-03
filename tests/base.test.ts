@@ -10,8 +10,6 @@ describe("Basic Site Functionality", async () => {
     const html = await $fetch("/");
 
     expect(html).toContain("ShawnWilson.dev");
-    expect(html).toContain("Portfolio Site");
-
-    throw "fail test";
+    expect(html).toContain("Portfolio site coming soon");
   });
 });

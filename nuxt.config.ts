@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    },
+  },
   compatibilityDate: "2025-07-15",
   css: ["./app/assets/css/main.css"],
   devtools: { enabled: true },
