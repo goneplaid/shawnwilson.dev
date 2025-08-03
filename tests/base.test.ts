@@ -11,5 +11,7 @@ describe("Basic Site Functionality", async () => {
 
     expect(html).toContain("ShawnWilson.dev");
     expect(html).toContain("Portfolio Site");
+
+    throw "fail test";
   });
 });
