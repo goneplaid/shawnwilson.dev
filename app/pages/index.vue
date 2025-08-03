@@ -7,9 +7,7 @@
   >
     <header class="text-center space-y-4">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground">
-        Shawn Wilson
-        <span class="sr-only">dot</span>
-        <span aria-hidden="true">.</span>dev
+        ShawnWilson.dev
       </h1>
       <p
         class="text-2xl md:text-3xl lg:text-4xl text-muted-foreground"
