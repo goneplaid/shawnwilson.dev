@@ -5,14 +5,9 @@
     role="main"
     aria-label="Portfolio homepage"
   >
-    <header class="text-center space-y-4">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground">
-        ShawnWilson.dev
-      </h1>
-      <p
-        class="text-xl md:text-2xl lg:text-3xl text-muted-foreground"
-        role="doc-subtitle"
-      >
+    <header class="text-center space-y-4 hero">
+      <h1>ShawnWilson.dev</h1>
+      <p class="text-muted-foreground" role="doc-subtitle">
         Portfolio site coming soon
       </p>
     </header>
