@@ -1,0 +1,39 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  @apply break-words transition transition-all;
+}
+
+h1 {
+  @apply text-primary font-serif text-3xl md:text-4xl lg:text-5xl font-medium;
+}
+
+.hero h1,
+h1.hero {
+  @apply text-5xl md:text-6xl lg:text-7xl;
+}
+
+h2 {
+  @apply text-primary font-display text-3xl lg:text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-primary font-display text-2xl lg:text-3xl font-semibold;
+}
+
+h4 {
+  @apply text-muted-foreground font-sans text-lg lg:text-xl font-light;
+}
+
+p {
+  @apply text-primary font-sans text-base lg:text-lg;
+}
+
+.hero p,
+p.hero {
+  @apply text-xl md:text-2xl lg:text-3xl;
+}
