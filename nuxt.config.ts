@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     prefetch: true,
     preload: true,
   },
-
   modules: [
     "@nuxt/test-utils/module",
     "shadcn-nuxt",
