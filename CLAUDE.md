@@ -101,3 +101,87 @@ The following sections provide guidance on how to code specific things and shoul
   - Examples: `nav[role="navigation"]`, `p[aria-label="Professional tagline"]`, `header`, `li`, `a`, `.avatar-wrapper`, `.avatar`
 - Separate large numbers of Tailwind classnames by category with separate `@apply` directives. They should be organized by typographic concerns, pseudo classes, spacing, etc. Use your best judgement to in categorically organizing styles onto separate lines.
 - Avoid nested style selectors unless using media queries
+
+## Testing Guidelines
+
+The following guidelines should be followed when writing tests for this Nuxt 4 application, based on lessons learned from testing composables and framework integrations.
+
+These guidelines have been established for the interim until we start using Playwright more extensively.
+
+### Testing Strategy by Component Type
+
+**Composables that use Nuxt framework APIs** (like `useHead`, `useRoute`, `useState`, etc.):
+
+- **PREFER**: Integration tests using `@nuxt/test-utils/e2e`
+- **AVOID**: Unit tests with complex mocking of framework internals
+- **WHY**: Framework APIs have complex internal dependencies that are fragile to mock and not meant for direct mocking
+
+**Pure business logic functions**:
+
+- **PREFER**: Unit tests with simple mocking
+- **AVOID**: Integration tests for simple logic
+- **WHY**: Pure functions are easier to test in isolation and don't require framework context
+
+**Vue components**:
+
+- **PREFER**: Component tests using `@vue/test-utils` with Nuxt test utilities
+- **AVOID**: Complex mocking of component dependencies
+- **WHY**: Components should be tested for their rendered output and user interactions
+
+### Testing Best Practices
+
+1. **Focus on behavior over implementation**: Test what the user/browser experiences, not internal implementation details
+
+2. **Use Nuxt's official testing utilities**: Always prefer `@nuxt/test-utils/e2e` and `@nuxt/test-utils` over custom test setups
+
+3. **Test the rendered output**: For composables that affect the DOM (like `useHead`), verify the actual HTML output rather than mocking internal calls
+
+4. **Keep tests minimal but effective**: Cover essential functionality without over-testing. Early in development, basic checks are sufficient
+
+5. **Avoid complex mocking**: If mocking becomes complex or requires understanding framework internals, consider switching to integration tests
+
+### Common Testing Patterns
+
+**For composables using framework APIs**:
+
+```typescript
+import { describe, it, expect } from "vitest";
+import { setup, $fetch } from "@nuxt/test-utils/e2e";
+
+describe("MyComposable Integration", async () => {
+  await setup({
+    // run nuxt in test mode
+  });
+
+  it("should have expected behavior in rendered output", async () => {
+    const html = await $fetch("/");
+    expect(html).toContain("expected content");
+  });
+});
+```
+
+**For pure utility functions**:
+
+```typescript
+import { describe, it, expect } from "vitest";
+import { myUtilFunction } from "@/lib/utils";
+
+describe("myUtilFunction", () => {
+  it("should return expected result for given input", () => {
+    expect(myUtilFunction("input")).toBe("expected output");
+  });
+});
+```
+
+### What to Avoid
+
+- **DON'T** mock `useHead`, `useRoute`, `useState`, or other core Nuxt composables
+- **DON'T** mock Vue's internal injection context or symbols
+- **DON'T** test implementation details that could change with framework updates
+- **DON'T** write overly complex test setups that are harder to maintain than the code being tested
+
+### Test File Organization
+
+- Place integration tests in `tests/` directory following the same structure as `app/`
+- Use descriptive test file names: `useAnalytics.test.ts`, `component-name.test.ts`
+- Group related tests using `describe` blocks with clear naming
