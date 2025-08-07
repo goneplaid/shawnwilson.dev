@@ -25,7 +25,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 definePageMeta({
-  layout: "default-layout",
+  layout: "coming-soon-layout",
 });
 </script>
 

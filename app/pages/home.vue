@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "main-layout",
+  layout: "default-layout",
 });
 </script>
 
