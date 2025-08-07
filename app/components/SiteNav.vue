@@ -45,7 +45,7 @@ li {
 a {
   @apply px-1 py-2 inline-flex items-center transition-colors duration-200;
   @apply text-lg font-sans underline underline-offset-8 text-primary hover:text-muted-foreground focus:text-muted-foreground;
-  @apply focus:outline-none focus:ring-2 focus:ring-muted-foreground focus:ring-offset-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm;
   @apply min-h-[44px];
 }
 
