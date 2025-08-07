@@ -71,6 +71,10 @@ pnpm test
 
 The following sections provide guidance on how to code specific things and should always be followed unless there's a specific conflict with another rule(s), at which point you should stop and ask about the conflict.
 
+### Vue.js development
+
+- Always explicitly import external modules—be they components, composables, or anything else.
+
 ### Semantic markup and a11y
 
 - Always attempt to use specific, semantic markup over generic tags like, `div` and `span`.
