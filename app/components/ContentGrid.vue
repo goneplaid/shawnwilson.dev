@@ -1,8 +1,16 @@
 <template>
-  <section>
+  <section :class>
     <slot />
   </section>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  class?: string;
+}
+
+defineProps<Props>();
+</script>
 
 <style lang="css" scoped>
 section {

@@ -1,31 +1,23 @@
 <template>
   <header role="banner">
-    <ContentGrid>
-      <div>
-        <h3>Shawn Wilson</h3>
-      </div>
+    <ContentGrid class="author-section">
+      <p class="site-author">Shawn Wilson</p>
 
-      <div
-        class="avatar-wrapper"
-        role="img"
-        aria-label="Profile photo of Shawn Wilson"
-      >
+      <div class="avatar-wrapper">
         <Avatar class="avatar">
           <AvatarImage
             src="/images/portrait.png"
-            alt="Shawn Wilson casual headshot"
+            alt="Casual headshot of Shawn Wilson"
           />
           <AvatarFallback>SW</AvatarFallback>
         </Avatar>
       </div>
     </ContentGrid>
 
-    <ContentGrid>
+    <ContentGrid class="banner-sub">
       <div>
-        <p role="doc-subtitle">Full Stack Product Engineer</p>
-        <p aria-label="Professional tagline">
-          Problem → Design → Code → Ship 🚀
-        </p>
+        <p class="job-title">Full Stack Product Engineer</p>
+        <p class="tagline">Problem → Design → Code → Ship 🚀</p>
       </div>
       <SiteNav />
     </ContentGrid>
@@ -40,7 +32,15 @@ import SiteNav from "@/components/SiteNav.vue";
 
 <style lang="css" scoped>
 header {
-  @apply bg-background mb-2;
+  @apply mb-2;
+}
+
+.author-section {
+  @apply flex flex-row items-center justify-between mb-8 md:mb-0 md:grid;
+}
+
+p.site-author {
+  @apply text-5xl font-display font-semibold;
 }
 
 .avatar-wrapper {
@@ -51,11 +51,15 @@ header {
   @apply w-20 h-20;
 }
 
-p[role="doc-subtitle"] {
+.banner-sub {
+  @apply items-end;
+}
+
+p.job-title {
   @apply text-lg lg:text-xl font-sans font-medium text-muted-foreground mb-2;
 }
 
-p[aria-label="Professional tagline"] {
+p.tagline {
   @apply lg:text-lg text-muted-foreground font-sans;
 }
 </style>
