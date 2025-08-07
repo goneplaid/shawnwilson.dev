@@ -1,2 +1,7 @@
 @import "./tailwind.css";
 @import "./typography.css";
+
+html,
+body {
+  @apply bg-muted;
+}
