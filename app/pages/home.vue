@@ -1,7 +1,7 @@
 <template>
   <main>
     <ContentGrid>
-      <Card class="intro-card">
+      <Card class="intro-card" shadow-level="xl">
         <CardHeader>
           <CardTitle :heading-level="1">Hello 👋</CardTitle>
         </CardHeader>
