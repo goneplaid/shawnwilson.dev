@@ -60,6 +60,6 @@ p.job-title {
 }
 
 p.tagline {
-  @apply lg:text-lg text-muted-foreground font-sans;
+  @apply lg:text-lg text-muted-foreground font-sans whitespace-nowrap;
 }
 </style>
