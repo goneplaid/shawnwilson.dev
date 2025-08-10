@@ -6,8 +6,8 @@ export default defineContentConfig({
       source: "experience/*.md",
       type: "page",
       schema: z.object({
-        title: z.string(),
-        subtitle: z.string(),
+        company: z.string(),
+        jobTitle: z.string(),
         duration: z.string().optional(),
         description: z.string().optional(),
       }),
@@ -16,7 +16,7 @@ export default defineContentConfig({
       source: "projects/*.md",
       type: "page",
       schema: z.object({
-        title: z.string(),
+        project: z.string(),
         year: z.string().optional(),
         description: z.string().optional(),
         tools: z.string().optional(),
