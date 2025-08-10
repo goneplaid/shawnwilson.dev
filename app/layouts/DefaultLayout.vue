@@ -17,3 +17,10 @@ import { useAnalytics } from "@/composables/useAnalytics";
 
 useAnalytics();
 </script>
+
+
+<style lang="css">
+main {
+  @apply mt-24;
+}
+</style>

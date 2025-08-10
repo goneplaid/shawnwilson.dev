@@ -27,10 +27,6 @@ definePageMeta({
 </script>
 
 <style lang="css" scoped>
-main {
-  @apply mt-24;
-}
-
 .intro-card {
   @apply col-span-1 md:col-span-2;
 }

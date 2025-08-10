@@ -11,18 +11,10 @@
       </li>
       <li>
         <NuxtLink
-          to="/home"
+          to="/work"
           :aria-current="$route.path === '/work' ? 'page' : undefined"
         >
           Work
-        </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink
-          to="/home"
-          :aria-current="$route.path === '/writing' ? 'page' : undefined"
-        >
-          Writing
         </NuxtLink>
       </li>
     </ul>
