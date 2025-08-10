@@ -40,7 +40,7 @@ header {
 }
 
 p.site-author {
-  @apply text-5xl font-display font-semibold md:whitespace-nowrap;
+  @apply text-4xl font-display font-semibold md:whitespace-nowrap;
 }
 
 .avatar-wrapper {
