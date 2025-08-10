@@ -17,10 +17,11 @@ export default defineNuxtConfig({
     preload: true,
   },
   modules: [
-    "@nuxt/test-utils/module",
-    "shadcn-nuxt",
     "@nuxt/fonts",
+    "@nuxt/content",
+    "@nuxt/test-utils/module",
     "@nuxtjs/google-fonts",
+    "shadcn-nuxt",
   ],
   postcss: {
     plugins: {
