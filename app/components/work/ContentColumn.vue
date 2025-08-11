@@ -2,15 +2,7 @@
   <section>
     <h4>{{ title }}</h4>
     <ul>
-      <li>
-        <p>Some content</p>
-      </li>
-      <li>
-        <p>Some content</p>
-      </li>
-      <li>
-        <p>Some content</p>
-      </li>
+      <slot />
     </ul>
   </section>
 </template>

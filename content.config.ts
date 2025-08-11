@@ -8,8 +8,8 @@ export default defineContentConfig({
       schema: z.object({
         company: z.string(),
         jobTitle: z.string(),
-        duration: z.string().optional(),
-        description: z.string().optional(),
+        duration: z.string(),
+        description: z.string(),
       }),
     }),
     projects: defineCollection({
@@ -17,9 +17,9 @@ export default defineContentConfig({
       type: "page",
       schema: z.object({
         project: z.string(),
-        year: z.string().optional(),
-        description: z.string().optional(),
-        tools: z.string().optional(),
+        year: z.string(),
+        description: z.string(),
+        tools: z.string(),
       }),
     }),
   },

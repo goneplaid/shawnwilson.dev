@@ -36,7 +36,7 @@ header {
 }
 
 .author-section {
-  @apply flex flex-row items-center justify-between mb-8 md:mb-0 md:grid;
+  @apply flex flex-row items-center justify-between mb-8 md:mb-6 md:grid;
 }
 
 p.site-author {
