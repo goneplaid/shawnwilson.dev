@@ -1,3 +1,10 @@
+/**
+ * Composable for integrating Google Analytics tracking with Nuxt application.
+ *
+ * Automatically configures Google Analytics 4 (GA4) by injecting the necessary
+ * script tags and initialization code into the document head. Uses Nuxt's useHead
+ * composable to ensure proper script loading with high priority and error handling.
+ */
 export const useAnalytics = () => {
   useHead({
     script: [

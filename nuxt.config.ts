@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     "@nuxt/test-utils/module",
     "@nuxtjs/google-fonts",
     "shadcn-nuxt",
+    "@nuxt/icon",
   ],
   postcss: {
     plugins: {

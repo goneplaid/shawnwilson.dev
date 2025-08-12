@@ -1,14 +1,16 @@
 <template>
   <Drawer direction="right" :modal="false" :open="true" @close="onClose">
-    <DrawerContent :id>
-      <div class="drawer-content">
-        <DrawerHeader>
-          <DrawerTitle @close="onClose">{{ "Details" }}</DrawerTitle>
-        </DrawerHeader>
-        <div class="drawer-content__body">
-          <div class="drawer-content__subtitle">Oh hello there.</div>
-        </div>
-      </div>
+    <DrawerContent :id class="content">
+      <DrawerHeader>
+        <DrawerTitle @close="onClose">{{ title }}</DrawerTitle>
+      </DrawerHeader>
+      <article>
+        <section>
+          <h4>{{ subtitle }}</h4>
+          <span>{{ supplemental }}</span>
+        </section>
+        <slot />
+      </article>
     </DrawerContent>
   </Drawer>
 </template>
@@ -23,20 +25,23 @@ import {
 
 defineProps<{
   id: string;
+  title: string;
+  subtitle: string;
+  supplemental: string;
   onClose: () => void;
 }>();
 </script>
 
-<style scoped>
-.drawer-content {
+<style lang="css" scoped>
+.content {
   @apply mx-auto w-full;
 }
 
-.drawer-content__body {
+article {
   @apply p-16 pt-0;
 }
 
-.drawer-content__subtitle {
+section {
   @apply flex flex-row justify-between pb-4 mb-10  border-b-2 border-muted-foreground;
 
   span {
