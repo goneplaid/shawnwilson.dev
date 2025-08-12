@@ -38,7 +38,7 @@ const props = defineProps<Props>();
 }
 
 .duration {
-  @apply text-muted-foreground text-base font-sans whitespace-nowrap leading-loose flex-shrink-0 italic;
+  @apply text-muted-foreground text-sm font-sans whitespace-nowrap leading-loose flex-shrink-0 italic;
 }
 
 .content {
@@ -46,7 +46,7 @@ const props = defineProps<Props>();
 }
 
 .job-title {
-  @apply text-muted-foreground font-sans font-medium;
+  @apply text-muted-foreground font-sans font-medium mb-4;
 }
 
 .description {

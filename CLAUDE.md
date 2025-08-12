@@ -28,6 +28,8 @@ pnpm test
 
 ## Project Architecture
 
+This is a **Nuxt 4** portfolio website built with Vue 3, TypeScript, and Tailwind CSS. The site showcases work experience and projects using a content-driven architecture.
+
 ### Framework Stack
 
 - **Nuxt 4**: Main framework with Vue 3 and TypeScript
