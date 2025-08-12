@@ -1,12 +1,12 @@
 <template>
-  <div class="main-wrapper">
+  <div class="site-wrapper">
     <SiteHeader />
     <slot />
   </div>
 </template>
 
 <style lang="css" scoped>
-.main-wrapper {
+.site-wrapper {
   @apply min-h-screen max-w-7xl mx-auto p-8 md:p-10 lg:p-12;
 }
 </style>
@@ -17,7 +17,6 @@ import { useAnalytics } from "@/composables/useAnalytics";
 
 useAnalytics();
 </script>
-
 
 <style lang="css">
 main {

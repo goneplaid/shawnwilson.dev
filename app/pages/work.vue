@@ -23,12 +23,15 @@
         </li>
       </ContentColumn>
     </ContentGrid>
+
+    <ContentDrawer id="DRAWER_ID" @close="() => false" />
   </main>
 </template>
 
 <script setup lang="ts">
 import ContentGrid from "~/components/ContentGrid.vue";
-import ContentColumn from "~/components/work/ContentColumn.vue";
+import ContentColumn from "~/components/work/ContentList.vue";
+import ContentDrawer from "~/components/work/ContentDrawer.vue";
 import type {
   ExperienceCollectionItem,
   ProjectsCollectionItem,

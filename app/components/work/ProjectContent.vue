@@ -38,7 +38,7 @@ const props = defineProps<Props>();
 }
 
 .year {
-  @apply text-muted-foreground text-base font-sans whitespace-nowrap leading-loose flex-shrink-0 italic;
+  @apply text-muted-foreground text-sm font-sans whitespace-nowrap leading-loose flex-shrink-0 italic;
 }
 
 .content {
