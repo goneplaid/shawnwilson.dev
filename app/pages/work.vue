@@ -2,48 +2,81 @@
   <main>
     <h1>Work</h1>
     <ContentGrid>
-      <ContentColumn title="Relevant Experience">
-        <li v-for="experience in relevantExperiences">
+      <ContentList title="Relevant Experience">
+        <ContentListItem
+          v-for="experience in relevantExperiences"
+          :drawer-id="DRAWER_ID"
+          :content-id="experience.path"
+        >
           <WorkExperienceContent
             :company="experience.company"
             :job-title="experience.jobTitle"
             :duration="experience.duration"
             :description="experience.description"
           />
-        </li>
-      </ContentColumn>
-      <ContentColumn title="Selected Projects">
-        <li v-for="project in selectedProjects">
+        </ContentListItem>
+      </ContentList>
+      <ContentList title="Selected Projects">
+        <ContentListItem
+          v-for="project in selectedProjects"
+          :drawer-id="DRAWER_ID"
+          :content-id="project.path"
+        >
           <WorkProjectContent
             :project="project.project"
             :year="project.year"
             :description="project.description"
             :tools="project.tools"
           />
-        </li>
-      </ContentColumn>
+        </ContentListItem>
+      </ContentList>
     </ContentGrid>
 
-    <ContentDrawer id="DRAWER_ID" @close="() => false" />
+    <ContentDrawer
+      v-if="selectedItem"
+      :id="DRAWER_ID"
+      :title="selectedContent.title"
+      :subtitle="selectedContent.subtitle"
+      :supplemental="selectedContent.supplemental"
+      @close="handleClose"
+    >
+      Drawer content
+    </ContentDrawer>
   </main>
 </template>
 
 <script setup lang="ts">
 import ContentGrid from "~/components/ContentGrid.vue";
-import ContentColumn from "~/components/work/ContentList.vue";
+import ContentList from "~/components/work/ContentList.vue";
+import ContentListItem from "~/components/work/ContentListItem.vue";
 import ContentDrawer from "~/components/work/ContentDrawer.vue";
-import type {
-  ExperienceCollectionItem,
-  ProjectsCollectionItem,
-} from "@nuxt/content";
 import type { ExperienceContent, ProjectContent } from "~/lib/types";
-
-const relevantExperiences = ref<ExperienceContent[]>([]);
-const selectedProjects = ref<ProjectContent[]>([]);
 
 definePageMeta({
   layout: "default-layout",
 });
+
+const DRAWER_ID = "work-content-drawer";
+
+const relevantExperiences = ref<ExperienceContent[]>([]);
+const selectedProjects = ref<ProjectContent[]>([]);
+
+const allItems = computed(() => [
+  ...relevantExperiences.value,
+  ...selectedProjects.value,
+]);
+
+const { selectedItem, setHashLocation } = useHashNav(allItems);
+
+const handleClose = async () => {
+  setHashLocation(undefined);
+};
+
+const selectedContent = computed(() => ({
+  title: "Here's a thing",
+  subtitle: "A subtitle",
+  supplemental: "1979",
+}));
 
 onMounted(async () => {
   try {
@@ -52,19 +85,15 @@ onMounted(async () => {
       queryCollection("projects").all(),
     ]);
 
-    relevantExperiences.value = expResponse.map(
-      (item: ExperienceCollectionItem) => ({
-        ...item,
-        path: item.path?.replace("experience/", ""),
-      })
-    );
+    relevantExperiences.value = expResponse.map((item) => ({
+      ...item,
+      path: item.path.replace("experience/", ""),
+    }));
 
-    selectedProjects.value = projResponse.map(
-      (item: ProjectsCollectionItem) => ({
-        ...item,
-        path: item.path?.replace("project/", ""),
-      })
-    );
+    selectedProjects.value = projResponse.map((item) => ({
+      ...item,
+      path: item.path.replace("projects/", ""),
+    }));
   } catch (error) {
     console.error("Error fetching data:", error);
   }
