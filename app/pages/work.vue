@@ -33,14 +33,14 @@
     </ContentGrid>
 
     <ContentDrawer
-      v-if="selectedItem"
+      v-if="selectedItem && selectedContent"
       :id="DRAWER_ID"
       :title="selectedContent.title"
       :subtitle="selectedContent.subtitle"
       :supplemental="selectedContent.supplemental"
       @close="handleClose"
     >
-      Drawer content
+      <ContentRenderer :value="selectedContent.content" />
     </ContentDrawer>
   </main>
 </template>
@@ -73,11 +73,37 @@ const handleClose = async () => {
   setHashLocation(undefined);
 };
 
-const selectedContent = computed(() => ({
-  title: "Here's a thing",
-  subtitle: "A subtitle",
-  supplemental: "1979",
-}));
+const selectedContent = computed(() => {
+  if (!selectedItem.value) return null;
+
+  // First check relevantExperiences
+  const experience = relevantExperiences.value.find(
+    (item) => item.id === selectedItem.value
+  );
+  if (experience) {
+    return {
+      title: experience.company,
+      subtitle: experience.jobTitle,
+      supplemental: experience.duration,
+      content: experience,
+    };
+  }
+
+  // Then check selectedProjects
+  const project = selectedProjects.value.find(
+    (item) => item.id === selectedItem.value
+  );
+  if (project) {
+    return {
+      title: project.project,
+      subtitle: project.tools,
+      supplemental: project.year,
+      content: project,
+    };
+  }
+
+  return null;
+});
 
 onMounted(async () => {
   try {
