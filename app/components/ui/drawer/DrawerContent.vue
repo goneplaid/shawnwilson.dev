@@ -4,9 +4,7 @@ import type { HTMLAttributes } from "vue";
 import { useForwardPropsEmits } from "reka-ui";
 import { DrawerContent, DrawerPortal } from "vaul-vue";
 import { cn } from "@/lib/utils";
-import { computed, onMounted, nextTick } from "vue";
 import DrawerOverlay from "./DrawerOverlay.vue";
-import { useDrawerPositioning } from "@/composables/useDrawerPositioning";
 
 const props = withDefaults(
   defineProps<
@@ -20,23 +18,6 @@ const props = withDefaults(
 const emits = defineEmits<DialogContentEmits>();
 
 const forwarded = useForwardPropsEmits(props, emits);
-
-const { drawerLeftPosition, drawerWidth, calculateDrawerPosition } =
-  useDrawerPositioning();
-
-onMounted(() => {
-  nextTick(() => {
-    calculateDrawerPosition();
-  });
-});
-
-const rightDrawerStyles = computed(() => {
-  return {
-    left: `${drawerLeftPosition.value}px`,
-    width: `${drawerWidth.value}px`,
-    right: "auto",
-  };
-});
 </script>
 
 <template>
@@ -45,17 +26,11 @@ const rightDrawerStyles = computed(() => {
     <DrawerContent
       data-slot="drawer-content"
       v-bind="forwarded"
-      :style="rightDrawerStyles"
       :class="
         cn(
-          `group/drawer-content bg-background fixed z-50 flex h-auto flex-col`,
-          // Modified right drawer styles - removed width classes since we're using dynamic positioning
-          // for this use case.
+          `vaul-drawer group/drawer-content bg-background fixed z-50 flex h-auto flex-col`,
           `data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:border-l-2 data-[vaul-drawer-direction=right]:border-l-muted-foreground`,
-          // TODO: Handle these other directions, if needed (we probably won't even use them tbh)
-          `data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg`,
-          `data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg`,
-          `data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:sm:max-w-sm`,
+          `data-[vaul-drawer-direction=right]:right-0`,
           props.class
         )
       "
@@ -67,3 +42,39 @@ const rightDrawerStyles = computed(() => {
     </DrawerContent>
   </DrawerPortal>
 </template>
+
+<style lang="css">
+:root {
+  --main-width: calc(80rem - theme("spacing.24"));
+  --gutter-width: calc((100% - var(--main-width)) / 2);
+  --column-width: calc((var(--main-width) - theme("spacing.24")) / 3);
+}
+
+.vaul-drawer {
+  @apply w-full;
+}
+
+@media (min-width: theme("screens.sm")) {
+  .vaul-drawer {
+    @apply w-1/2;
+  }
+}
+
+@media (min-width: theme("screens.md")) {
+  .vaul-drawer {
+    @apply w-1/2;
+  }
+}
+
+@media (min-width: theme("screens.xl")) {
+  :root {
+    --main-width: calc(80rem - theme("spacing.24"));
+    --gutter-width: calc((100% - var(--main-width)) / 2);
+    --column-width: calc((var(--main-width) - theme("spacing.24")) / 3);
+  }
+
+  .vaul-drawer {
+    width: calc((var(--gutter-width)) + var(--column-width));
+  }
+}
+</style>
