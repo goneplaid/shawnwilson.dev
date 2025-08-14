@@ -38,6 +38,7 @@
       :title="selectedContent.title"
       :subtitle="selectedContent.subtitle"
       :supplemental="selectedContent.supplemental"
+      :content-key="selectedItem"
       @close="handleClose"
     >
       <ContentRenderer :value="selectedContent.content" />
