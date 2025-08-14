@@ -64,7 +64,6 @@ section {
   @apply w-full;
 }
 
-/* Fade transition styles */
 .content-fade-enter-active,
 .content-fade-leave-active {
   transition: opacity 200ms ease-in-out;

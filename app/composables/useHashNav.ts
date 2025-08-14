@@ -10,7 +10,6 @@ type NavLocation = string | undefined;
 export const useHashNav = (items?: Ref<string[]>) => {
   const route = useRoute();
   const router = useRouter();
-
   const selectedItem = ref<NavLocation>(undefined);
 
   const pushHash = async (itemName: NavLocation) => {
@@ -44,9 +43,7 @@ export const useHashNav = (items?: Ref<string[]>) => {
         console.log(itemsValue);
         if (hash && hash.length > 1) {
           const itemId = hash.substring(1);
-
           const foundItem = itemsValue.find((item) => item === itemId);
-
           selectedItem.value = foundItem;
         } else {
           selectedItem.value = undefined;
