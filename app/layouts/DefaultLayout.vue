@@ -7,7 +7,7 @@
 
 <style lang="css" scoped>
 .site-wrapper {
-  @apply min-h-screen max-w-7xl mx-auto p-8 md:p-10 lg:p-12;
+  @apply min-h-screen max-w-5xl mx-auto p-8 md:p-12;
 }
 </style>
 
