@@ -23,7 +23,7 @@
 import type { ExperienceContent } from "~/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface Props extends Omit<ExperienceContent, "path"> {}
+interface Props extends Omit<ExperienceContent, "id"> {}
 
 const props = defineProps<Props>();
 </script>

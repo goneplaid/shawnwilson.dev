@@ -6,7 +6,7 @@
         <ContentListItem
           v-for="experience in relevantExperiences"
           :drawer-id="DRAWER_ID"
-          :content-id="experience.path"
+          :content-id="experience.id"
         >
           <WorkExperienceContent
             :company="experience.company"
@@ -20,7 +20,7 @@
         <ContentListItem
           v-for="project in selectedProjects"
           :drawer-id="DRAWER_ID"
-          :content-id="project.path"
+          :content-id="project.id"
         >
           <WorkProjectContent
             :project="project.project"
@@ -50,6 +50,7 @@ import ContentGrid from "~/components/ContentGrid.vue";
 import ContentList from "~/components/work/ContentList.vue";
 import ContentListItem from "~/components/work/ContentListItem.vue";
 import ContentDrawer from "~/components/work/ContentDrawer.vue";
+import { useHashNav } from "@/composables/useHashNav";
 import type { ExperienceContent, ProjectContent } from "~/lib/types";
 
 definePageMeta({
@@ -62,8 +63,8 @@ const relevantExperiences = ref<ExperienceContent[]>([]);
 const selectedProjects = ref<ProjectContent[]>([]);
 
 const allItems = computed(() => [
-  ...relevantExperiences.value,
-  ...selectedProjects.value,
+  ...relevantExperiences.value.map((i) => i.id),
+  ...selectedProjects.value.map((i) => i.id),
 ]);
 
 const { selectedItem, setHashLocation } = useHashNav(allItems);
@@ -87,12 +88,12 @@ onMounted(async () => {
 
     relevantExperiences.value = expResponse.map((item) => ({
       ...item,
-      path: item.path.replace("experience/", ""),
+      id: item.path.replace(/\/experience\//, ""),
     }));
 
     selectedProjects.value = projResponse.map((item) => ({
       ...item,
-      path: item.path.replace("projects/", ""),
+      id: item.path.replace(/\/projects\//, ""),
     }));
   } catch (error) {
     console.error("Error fetching data:", error);
