@@ -6,16 +6,12 @@
  * manages selectedItem state by matching the hash to items with a path property.
  */
 type NavLocation = string | undefined;
-export type SelectedLocation = {
-  path: String;
-  name: String;
-};
 
-export const useHashNav = <T extends { path?: string }>(items?: Ref<T[]>) => {
+export const useHashNav = (items?: Ref<string[]>) => {
   const route = useRoute();
   const router = useRouter();
 
-  const selectedItem = ref<T | null>(null);
+  const selectedItem = ref<NavLocation>(undefined);
 
   const pushHash = async (itemName: NavLocation) => {
     await router.push({
@@ -45,16 +41,15 @@ export const useHashNav = <T extends { path?: string }>(items?: Ref<T[]>) => {
     watch(
       [() => route.hash, items],
       ([hash, itemsValue]) => {
+        console.log(itemsValue);
         if (hash && hash.length > 1) {
           const itemId = hash.substring(1);
 
-          const foundItem = itemsValue.find(
-            (item) => item.path?.replace(/\//, "") === itemId
-          );
+          const foundItem = itemsValue.find((item) => item === itemId);
 
-          selectedItem.value = foundItem || null;
+          selectedItem.value = foundItem;
         } else {
-          selectedItem.value = null;
+          selectedItem.value = undefined;
         }
       },
       { immediate: true }

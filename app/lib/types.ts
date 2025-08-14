@@ -1,5 +1,5 @@
 export type ExperienceContent = {
-  path: string;
+  id: string;
   company: string;
   jobTitle: string;
   duration: string;
@@ -7,7 +7,7 @@ export type ExperienceContent = {
 };
 
 export type ProjectContent = {
-  path: string;
+  id: string;
   project: string;
   year: string;
   description: string;

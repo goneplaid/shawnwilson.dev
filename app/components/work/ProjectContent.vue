@@ -23,7 +23,7 @@
 import type { ProjectContent } from "~/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface Props extends Omit<ProjectContent, "path"> {}
+interface Props extends Omit<ProjectContent, "id"> {}
 
 const props = defineProps<Props>();
 </script>
